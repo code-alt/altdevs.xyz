@@ -1,0 +1,193 @@
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes transLine {
+   0% {
+    left: calc(50% - 5px);
+    top: calc(50% - 155px)
+   }
+   25% {
+    left: calc(50% + 205px);
+    top: calc(50% - 5px);
+   }
+   50% {
+    left: calc(50% - 5px);
+    top: calc(50% + 155px);
+   }
+   75% {
+    left: calc(50% - 205px);
+    top: calc(50% - 5px);
+   }
+   100% {
+    left: calc(50% - 5px);
+    top: calc(50% - 155px)
+   }
+}
+
+#main {
+  display: none;
+  opacity: 0;
+  transition: 1s;
+  overflow: auto;
+}
+
+#start {
+  transition: 0.5s;
+}
+
+#line {
+  animation: transLine 2s ease-in-out infinite, vibebox 3s ease-in-out infinite;
+  animation-fill-mode: forwards;
+  position: absolute;
+  transition: 0.5s;
+  background: rgb(150, 233, 150);
+  background: linear-gradient(
+      45deg,
+      rgba(89, 255, 161, 0.75),
+      rgba(164, 144, 255, 0.75),
+      rgba(46, 171, 255, 0.75),
+      rgba(89, 255, 161, 0.75)
+    );
+    background-size: 300%;
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  border-radius: 100px;
+  box-shadow: 0 0 10px rgba(46, 171, 255, 0.75);
+}
+
+#text {
+  font-size: 3em;
+  text-align: left;
+  font-weight: bold;
+  color: rgb(150, 233, 150);
+  animation: text 3s ease-in-out infinite;
+  transition: 1s;
+  text-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
+  position: fixed;
+  left: calc(50% + 30px);
+  top: 5%;
+  height: 90vh;
+  width: calc(50% - 60px);
+}
+
+#info {
+  font-size: 2.5em;
+  text-align: right;
+  font-weight: bold;
+  color: rgb(150, 233, 150);
+  animation: text 3s ease-in-out infinite;
+  transition: 1s;
+  text-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
+  position: fixed;
+  right: calc(50% + 30px);
+  top: 5%;
+  height: 90vh;
+  width: calc(50% - 60px);
+}
+
+#mainline {
+  animation: vibebox 3s ease-in-out infinite;
+  background: white;
+  background-size: 300%;
+  position: fixed;
+  height: 90vh;
+  width: 10px;
+  top: 5%;
+  left: calc(50% - 5px);
+  transition: 1s;
+  border-radius: 50px;
+}
+
+#loadText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  text-align: center;
+  font-weight: bold;
+  color: rgb(150, 233, 150);
+  animation: text 3s ease-in-out infinite;
+  transition: 1s;
+  text-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
+}
+
+@keyframes vibebox {
+  0% {
+    box-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
+    background: conic-gradient(
+      from var(--angle),
+      rgba(89, 255, 161, 0.75),
+      rgba(164, 144, 255, 0.75),
+      rgba(46, 171, 255, 0.75)
+    );
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(164, 144, 255, 0.75);
+    --angle: 180deg;
+    background: conic-gradient(
+      from var(--angle),
+      rgba(89, 255, 161, 0.75),
+      rgba(164, 144, 255, 0.75),
+      rgba(46, 171, 255, 0.75)
+    );
+  }
+  100% {
+    background: conic-gradient(
+      from var(--angle),
+      rgba(89, 255, 161, 0.75),
+      rgba(164, 144, 255, 0.75),
+      rgba(46, 171, 255, 0.75)
+    );
+    box-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
+    --angle: 360deg;
+  }
+}
+
+@keyframes text {
+  0% {
+    background: linear-gradient(
+      var(--angle),
+      rgba(89, 255, 161, 0.75),
+      rgba(164, 144, 255, 0.75),
+      rgba(46, 171, 255, 0.75)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
+  } 
+  50% {
+    text-shadow: 0 0 10px rgba(164, 144, 255, 0.75);
+    background: linear-gradient(
+      var(--angle),
+      rgba(89, 255, 161, 0.75),
+      rgba(164, 144, 255, 0.75),
+      rgba(46, 171, 255, 0.75)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  100% {
+    --angle: 360deg;
+    text-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
+    background: linear-gradient(
+      var(--angle),
+      rgba(89, 255, 161, 0.75),
+      rgba(164, 144, 255, 0.75),
+      rgba(46, 171, 255, 0.75)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background: #0d0905;
+}
