@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist');
+
 @property --angle {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -125,16 +127,17 @@
       rgba(164, 144, 255, 0.75),
       rgba(46, 171, 255, 0.75)
     );
+    --angle: 0deg;
   }
   50% {
     box-shadow: 0 0 10px rgba(164, 144, 255, 0.75);
-    --angle: 180deg;
     background: conic-gradient(
       from var(--angle),
       rgba(89, 255, 161, 0.75),
       rgba(164, 144, 255, 0.75),
       rgba(46, 171, 255, 0.75)
     );
+    --angle: 180deg;
   }
   100% {
     background: conic-gradient(
@@ -150,6 +153,7 @@
 
 @keyframes text {
   0% {
+    border: 0;
     background: linear-gradient(
       var(--angle),
       rgba(89, 255, 161, 0.75),
@@ -158,7 +162,9 @@
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
     text-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
+    --angle: 0deg;
   } 
   50% {
     text-shadow: 0 0 10px rgba(164, 144, 255, 0.75);
@@ -170,8 +176,11 @@
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
+    --angle: 180deg;
   }
   100% {
+    border: 0;
     --angle: 360deg;
     text-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
     background: linear-gradient(
@@ -182,6 +191,22 @@
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+@media (max-width: 1000px) { 
+  #mainline {
+    display: none;
+  }
+  #text {
+    display: none;
+  }
+  #info {
+    text-align: left;
+    width: calc(100% - 20px);
+    left: 10px;
+    font-size: 1.75em;
   }
 }
 
@@ -190,4 +215,5 @@ html {
   margin: 0;
   padding: 0;
   background: #0d0905;
+  font-family: "Urbanist", sans-serif;
 }
