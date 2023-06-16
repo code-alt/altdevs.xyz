@@ -1,4 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Urbanist');
+@font-face {
+  font-family: 'Urbanist';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Urbanist Regular'), local('Urbanist-Regular'),
+    url(/urbanist/Urbanist-Regular.ttf)
+      format('ttf');
+  font-display: swap;
+}
 
 @property --angle {
   syntax: '<angle>';
